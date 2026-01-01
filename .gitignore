@@ -1,0 +1,28 @@
+# OS / Editor
+.DS_Store
+.vscode/
+.idea/
+
+# Logs
+*.log
+
+# Env files
+.env
+.env.*
+
+# Dependencies
+**/node_modules/
+**/vendor/
+
+# Build artifacts
+**/dist/
+**/build/
+**/.vite/
+
+# Laravel
+api-main/storage/framework/cache/data/
+api-main/storage/logs/
+api-main/bootstrap/cache/*.php
+
+# Coverage
+**/coverage/
