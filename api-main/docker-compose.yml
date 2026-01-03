@@ -1,0 +1,53 @@
+services:
+    api:
+        build: .
+        depends_on:
+            -   redis
+            -   postgres
+        volumes:
+            -   .:/var/www
+        ports:
+            - "8000:8000"
+            - "8080:8080"
+            - "9004:9003"
+        environment:
+            - XDEBUG_MODE=debug
+
+    postgres:
+        image: postgis/postgis:15-master
+        container_name: postgresql
+        build: ./docker/database
+        environment:
+            POSTGRES_USER: ${DB_USERNAME}
+            POSTGRES_PASSWORD: ${DB_PASSWORD}
+            POSTGRES_DB: ${DB_DATABASE}
+        volumes:
+            - postgres_data:/var/lib/postgresql/data
+        ports:
+            - "5432:5432"
+
+    redis:
+        image: redis:7-alpine
+        container_name: redis
+        ports:
+            - "6379:6379"
+        volumes:
+            - redis_data:/data
+
+    minio:
+        image: minio/minio:latest
+        container_name: minio
+        ports:
+            - "9000:9000"
+            - "9001:9001"
+        volumes:
+            - minio_data:/data
+        environment:
+            MINIO_ROOT_USER: ${MINIO_ROOT_USER:-minioadmin}
+            MINIO_ROOT_PASSWORD: ${MINIO_ROOT_PASSWORD:-minioadmin}
+        command: server /data --console-address ":9001"
+
+volumes:
+    postgres_data:
+    redis_data:
+    minio_data:
