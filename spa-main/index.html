@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, viewport-fit=cover, user-scalable=no"
+    />
+    <link rel="stylesheet" href="/src/app/styles/index.css" />
+    <meta name="color-scheme" content="light" />
+    <title>Plus Date</title>
+    <style>
+      @keyframes heart-beat {
+        0%,
+        100% {
+          transform: scale(1);
+        }
+        40% {
+          transform: scale(0.9);
+        }
+      }
+
+      .heart {
+        display: inline-block;
+        transform-origin: center;
+        animation: heart-beat 1s ease-in-out infinite;
+      }
+    </style>
+  </head>
+  <body>
+    <section
+      id="hydration-screen"
+      class="fixed inset-0 h-full w-full flex flex-col items-center justify-center text-center"
+      style="
+        z-index: 9999;
+        background: radial-gradient(
+          149.52% 58.99% at 50% 41.01%,
+          #221419 0%,
+          #000000 82.69%,
+          #000000 82.7%
+        );
+      "
+    >
+      <img class="heart" src="/logoWithShadow.svg" alt="logoWithShadow" width="80" height="80" />
+      <h1 class="title1-bold mt-2">PlusDate</h1>
+    </section>
+    <div id="root"></div>
+    <script type="module" src="/src/app/main.tsx"></script>
+  </body>
+</html>
