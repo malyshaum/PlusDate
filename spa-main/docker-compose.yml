@@ -1,0 +1,21 @@
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        # Pass environment variables from .env file to build
+        VITE_MODE: ${VITE_MODE}
+        VITE_API_URL: ${VITE_API_URL}
+        VITE_SOCKET_AUTH_URL: ${VITE_SOCKET_AUTH_URL}
+        VITE_SOCKET_HOST: ${VITE_SOCKET_HOST}
+        VITE_SOCKET_PORT: ${VITE_SOCKET_PORT}
+        VITE_GTM_TOKEN: ${VITE_GTM_TOKEN}
+        VITE_CENTRIFUGO_WS_URL: ${VITE_CENTRIFUGO_WS_URL}
+        VITE_MAINTENANCE_MODE: ${VITE_MAINTENANCE_MODE}
+    env_file:
+      - .env
+    ports:
+      - "80:80"
+    restart: unless-stopped
+    container_name: plusdate-spa
