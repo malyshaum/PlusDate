@@ -1,0 +1,55 @@
+name: Build and Publish Docker Image
+
+on:
+  release:
+    types: [published]
+
+env:
+  REGISTRY: ghcr.io
+
+jobs:
+  build-and-push:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
+      - name: Log in to Container Registry
+        uses: docker/login-action@v3
+        with:
+          registry: ${{ env.REGISTRY }}
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Extract tag version and image name
+        id: meta
+        run: |
+          TAG=${GITHUB_REF#refs/tags/}
+          IMAGE_NAME=$(echo "${{ github.repository }}" | tr '[:upper:]' '[:lower:]')
+          echo "tag=${TAG}" >> $GITHUB_OUTPUT
+          echo "image_name=${IMAGE_NAME}" >> $GITHUB_OUTPUT
+          echo "Building Docker image: ${IMAGE_NAME}:${TAG}"
+
+      - name: Build and push Docker image
+        uses: docker/build-push-action@v5
+        with:
+          context: .
+          push: true
+          tags: |
+            ${{ env.REGISTRY }}/${{ steps.meta.outputs.image_name }}:${{ steps.meta.outputs.tag }}
+            ${{ env.REGISTRY }}/${{ steps.meta.outputs.image_name }}:latest
+          build-args: |
+            VITE_API_URL=${{ secrets.VITE_API_URL }}
+            VITE_SOCKET_AUTH_URL=${{ secrets.VITE_SOCKET_AUTH_URL }}
+            VITE_SOCKET_HOST=${{ secrets.VITE_SOCKET_HOST }}
+            VITE_SOCKET_PORT=${{ secrets.VITE_SOCKET_PORT }}
+            VITE_GTM_TOKEN=${{ secrets.VITE_GTM_TOKEN }}
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
