@@ -1,0 +1,620 @@
+{
+  "greeting": "Meet your next match on Telegram",
+  "continue": "Continue",
+  "ok": "OK",
+  "start": "Start",
+  "and": "and",
+  "today": "today",
+  "name": "Name",
+  "sex": "Sex",
+  "male": "Male",
+  "female": "Female",
+  "city": "City",
+  "cities": "Cities",
+  "yourCity": "City",
+  "search": "Search",
+  "cancel": "Cancel",
+  "apply": "Apply",
+  "cm": "cm",
+  "view": "View",
+  "tryAgain": "Try again",
+  "save": "Save",
+  "clear": "Clear",
+  "reset": "Reset",
+  "photo": "Photo",
+  "needPremium": "Premium required",
+  "verification": "Verification",
+  "newMatch": "You’ve got a new match!",
+  "selfie": "Selfie",
+  "send": "Send",
+  "replace": "Replace",
+  "pin": "Set as main",
+  "delete": "Delete",
+  "startWithLimitations": "start with limits",
+  "joinApp": "Join PlusDate",
+  "menu": {
+    "swipe": "Swipe",
+    "profile": "Profile",
+    "likes": "Likes",
+    "chat": "Chats"
+  },
+  "loading": "Loading",
+  "deleteMatch": {
+    "title": "Delete Match",
+    "description": "When you delete a match, chat with that user will also be deleted",
+    "cancel": "Cancel",
+    "delete": "Delete"
+  },
+  "popular": "popular",
+  "bought": "bought",
+  "purchased": "purchased",
+  "all": "All",
+  "report": "Report",
+  "support": "Support",
+  "terms": "Terms of use",
+  "privacy": "Privacy Policy",
+  "typing": "typing",
+
+  "newLike": "Someone liked you!",
+  "premiumFilters": "Premium filters",
+  "offlineNotice": "Reconnection",
+
+  "age": {
+    "question": "How old are you?"
+  },
+
+  "height": {
+    "question": "What is your height?"
+  },
+
+  "eye": {
+    "question": "What is your eye color?"
+  },
+
+  "interests": {
+    "title": "Interests",
+    "searchFor": "I'm looking for:",
+    "searchForQuestion": "What are you looking for?",
+    "relations": "Relationship",
+    "friends": "Friendship",
+    "no_answer": "I’m not sure yet",
+    "descriptionLabel": "Description",
+    "descriptionSubLabel": "Optional",
+    "hobbiesLabel": "Additional",
+    "hobbiesSubLabel": "optional, 5 max"
+  },
+
+  "onboarding": {
+    "basic": {
+      "title": "Basic information",
+      "instagramName": "your profile name",
+      "instagramNote": "Optional. Instagram needs to be open for all.",
+      "addInfo": "Additional info",
+      "birthday": "Date of birth",
+      "chooseCity": "Choose a city"
+    },
+    "year": {
+      "title": "How old are you?"
+    },
+    "city": {
+      "title": "Where are you from?"
+    },
+    "height": {
+      "title": "Height"
+    },
+    "eye": {
+      "title": "Eye color"
+    },
+    "activity": {
+      "title": "Your Activity",
+      "question": "What is your field of activity?",
+      "skip": "Skip"
+    },
+    "interests": {
+      "descriptionPlaceholder": "Tell us more about yourself (optional, 255 max)"
+    },
+    "media": {
+      "title": "Add photos and video",
+      "video": "Video",
+      "videoNote": "Optional",
+      "note": "Add 3 photos to continue",
+      "subNote": "We will verify your media during the verification stage",
+      "addVideo": "Add video"
+    },
+    "verification": {
+      "title": "Verification",
+      "description": "Complete a brief verification process so that other users can be sure you are a real person",
+      "note": "Take a selfie in which your face is clearly visible",
+      "makePhoto": "Make Photo",
+      "photoReady": "Your photo is ready",
+      "checkPhoto": "Please make sure your face is clearly visible and the image is not blurry",
+      "remakePhoto": "Remake Photo"
+    }
+  },
+
+  "profile": {
+    "buyPremium": "Purchase a premium",
+    "premiumDiscount": "70% discount",
+    "finishProfile": "Fill in your profile",
+    "finishProfileSubtitle": "This will help attract more attention",
+    "underModeration": "Profile is being verified",
+    "underModerationSubtitle": "The main functions remain active",
+    "hideInstagram": "Hide my instagram",
+    "hideAge": "Hide my age",
+    "mainInformation": "Main information",
+    "additionalInformation": "Additional information",
+    "age": "Age",
+    "yourCity": "City",
+    "industry": "Industry",
+    "height": "Height",
+    "eyeColor": "Eye color",
+    "photosVideos": "Photos and Videos",
+    "choose": "Choose",
+    "chosen": "chosen",
+    "selected": "selected",
+    "activityQuestion": "What do you do for a living?"
+  },
+
+  "moderation": {
+    "title": "Re-moderation",
+    "description": "To continue, you must replace the photos highlighted in red",
+    "verification": {
+      "description": "Complete a brief verification process so that other users can be sure you are a real person.",
+      "photoGuide": "Take a selfie in which your face is clearly visible."
+    }
+  },
+
+  "moderationSplash": {
+    "title": "Profile Under Review",
+    "description": "Some features will be unavailable, but you can start swiping right away"
+  },
+  "moderationRestricted": {
+    "title": "Account access restricted",
+    "description": "We've restricted access to the app. This may be related to a complaint or failed verification.",
+    "rules": "More about rules",
+    "contactSupport": "Contact support"
+  },
+
+  "news": "PlusDate News",
+
+  "validation": {
+    "name": "Name is invalid",
+    "name_required": "Please enter your name",
+    "name_long": "Name is too long",
+    "instagram": "Instagram profile name is invalid",
+    "sex_required": "Please select your gender",
+    "birthdate_required": "Please enter your date of birth",
+    "city_required": "Please select your city",
+    "search_for_required": "Please select what you're looking for",
+    "description_long": "Description is too long (max 255 characters)",
+    "description_long_120": "Description is too long (max 120 characters)",
+    "note_required": "Please enter a reason",
+    "note_min_50": "Please enter at least 50 characters",
+    "photos_required": "Please upload exactly 3 photos",
+    "verification_photo_required": "Verification photo is required",
+    "required": "This field is required",
+    "image_type_invalid": "Invalid image format. Please upload JPEG, PNG, or WebP",
+    "image_size_too_large": "Image is too large. Maximum size is 5MB",
+    "video_type_invalid": "Invalid video format",
+    "video_size_too_large": "Video is too large. Maximum size is 50MB",
+    "duplicate_photos": "Please upload different photos. Duplicates are not allowed",
+    "custom_text_required": "Please describe the reason for your complaint",
+    "upload_failed": "Upload failed. Tap to retry"
+  },
+
+  "hobbies": {
+    "reading": "Reading",
+    "cooking": "Cooking",
+    "gardening": "Gardening",
+    "painting": "Painting",
+    "photography": "Photography",
+    "hiking": "Hiking",
+    "swimming": "Swimming",
+    "cycling": "Cycling",
+    "knitting": "Knitting",
+    "writing": "Writing",
+    "drawing": "Drawing",
+    "fishing": "Fishing",
+    "dancing": "Dancing",
+    "singing": "Singing",
+    "gaming": "Gaming",
+    "traveling": "Traveling",
+    "collecting": "Collecting",
+    "woodworking": "Woodworking",
+    "pottery": "Pottery",
+    "meditation": "Meditation",
+    "fitness": "Fitness",
+    "music": "Music",
+    "cinema": "Cinema",
+    "astrology": "Astrology",
+    "skateboarding": "Skateboarding",
+    "coffee": "Coffee",
+    "psychology": "Psychology",
+    "fashion": "Fashion",
+    "parties": "Parties",
+    "technology": "Technology",
+    "yoga": "Yoga",
+    "auto": "Auto",
+    "streaming": "Streaming",
+    "podcasts": "Podcasts",
+    "pets": "Pets",
+    "diy": "DIY",
+    "anime": "Anime",
+    "roleplay": "Roleplay",
+    "languages": "Languages",
+    "volunteering": "Volunteering",
+    "boardgames": "Board Games"
+  },
+
+  "activities": {
+    "agro": "Agriculture",
+    "science": "Science",
+    "it": "IT",
+    "engineering": "Engineering",
+    "medicine": "Medicine",
+    "fashion_industry": "Fashion Industry",
+    "sales_and_customer_service": "Sales and Customer Service",
+    "automotive": "Automotive",
+    "finance_and_investments": "Finance and Investments",
+    "show_business": "Show Business",
+    "blogging": "Blogging",
+    "education": "Education",
+    "service_industry": "Service Industry",
+    "government_services": "Government Services",
+    "real_estate": "Real Estate",
+    "marketing": "Marketing",
+    "modeling": "Modeling",
+    "sports": "Sports",
+    "media_and_communications": "Media and Communications",
+    "travel_and_tourism": "Travel and Tourism",
+    "gaming_industry": "Gaming Industry",
+    "art": "Art",
+    "music": "Music",
+    "law": "Law"
+  },
+
+  "myProfile": {
+    "inviteFriends": "Invite friends",
+    "editProfile": "Edit profile",
+    "subscription": "Subscription",
+    "settings": "Settings"
+  },
+  "inviteFriends": {
+    "title": "Invite Friends",
+    "description": "Share the link so your friends can start dating too",
+    "copyLink": {
+      "title": "Copy Link",
+      "subtitle": "Use in chats and posts"
+    },
+    "shareFriends": {
+      "title": "Send to Friends",
+      "subtitle": "Personal invitation"
+    },
+    "addStory": {
+      "title": "Add to Story",
+      "subtitle": "Share the link in your story"
+    },
+    "shareButton": "Share",
+    "shareMessage": "Join PlusDate! Meet interesting people right inside Telegram!",
+    "linkCopied": "Copied",
+    "copyError": "Failed to copy link",
+    "shareError": "Failed to share",
+    "storyError": "Failed to add to story"
+  },
+  "settings": {
+    "language": "Language",
+    "english": "English",
+    "russian": "Russian",
+    "other": "Other",
+    "notifications": "Notifications"
+  },
+  "likes": {
+    "title": "Likes",
+    "empty": "The list is still empty",
+    "loading": "Loading..."
+  },
+  "eyeColors": {
+    "green": "Green",
+    "blue": "Blue",
+    "grey": "Grey",
+    "brown": "Brown"
+  },
+  "rejectionReasons": {
+    "bad_photo_quality": "Bad photo quality",
+    "face_not_detected": "Face not detected",
+    "violation_of_internal_rules": "Violation of internal rules",
+    "nsfw_content": "Content with nudity, sexually suggestive material, violence, or offensive language",
+    "user_profile_photo_face_from_verification_photo_not_found": "Face on photo does not match the face in the verification photo",
+    "general_reason": "Media files violate our community guidelines",
+    "internal_error": "Something went wrong during file verification, try to upload again",
+    "face_from_verification_photo_not_found": "Face from verification photo not found in profile photos",
+    "declined_by_admin": "Profile declined by moderator",
+    "video_inappropriate": "Video content violates community guidelines",
+    "name_inappropriate": "Name violates community guidelines or contains inappropriate content",
+    "description_inappropriate": "Profile description violates community guidelines or contains inappropriate content",
+    "instagram_inappropriate": "Instagram profile name violates community guidelines or contains inappropriate content"
+  },
+  "referral": {
+    "title": "Invite friends - get rewards",
+    "totalEarnings": "Total",
+    "friendsInvited": "Friends invited",
+    "withdraw": "Withdraw",
+    "minimumAmount": "Minimum amount 3 TON",
+    "howToInvite": "How to invite",
+    "copy": "Copy",
+    "copied": "Copied",
+    "shareLink": "Share link",
+    "shareMessage": "Join me on Plus Date"
+  },
+  "searchPreferences": {
+    "includeNearby": "Include nearby location",
+    "withVideo": "With video only",
+    "withPremium": "With Premium only",
+    "ageRange": "Age",
+    "heightRange": "Height",
+    "expandAgeRange": "Expand if no matches",
+    "currentLocation": "Your current location",
+    "additionalFilters": "Additional Filters",
+    "city": "City",
+    "activity": "Activity",
+    "eyeColor": "Eye Color",
+    "interests": "Interests",
+    "selectEyeColors": "Select eye colors",
+    "selectInterests": "Select interests"
+  },
+  "filters": "Filters",
+  "match": {
+    "title": "Match!",
+    "description": "You and {{name}} just created a pair!",
+    "startChat": "Start chat",
+    "continueSwiping": "Continue swiping",
+    "goToFeed": "Go to feed",
+    "messageSent": "Message sent",
+    "messagePlaceholder": "Make the first move..."
+  },
+
+  "matches": {
+    "title": "Matches",
+    "empty": "No matches yet"
+  },
+
+  "chats": {
+    "newMatches": "New matches",
+    "messages": "Messages",
+    "chats": "Chats",
+    "loading": "Loading...",
+    "newMatch": "New match! Start conversation",
+    "empty": {
+      "title": "Chat list is empty",
+      "subtitle": "Start swiping to find your first matches"
+    }
+  },
+  "premium": {
+    "womenFreeInfo": "You have received 30 days of full access to all premium features. Use the service without restrictions!",
+    "getPremium": "Get Premium",
+    "discount70": "Profit 70%",
+    "plans": {
+      "3days": {
+        "title": "days"
+      },
+      "1week": {
+        "title": "Week",
+        "subtitle": "Popular"
+      },
+      "month": {
+        "title": "Month",
+        "subtitle": "profit 65%"
+      },
+      "3month": {
+        "title": "month",
+        "subtitle": "Profit 70%"
+      }
+    },
+    "features": {
+      "vip": {
+        "title": "VIP-icon",
+        "subtitle": "Your profile is more visible and attracts more attention"
+      },
+      "whoLikedYou": {
+        "title": "Who liked you",
+        "subtitle": "Find out who liked your profile"
+      },
+      "video": {
+        "title": "Video in profiles",
+        "subtitle": "Watch the video and get to know the person better"
+      },
+      "revert": {
+        "title": "Undo swipe",
+        "subtitle": "Return to the previous form with a single click"
+      },
+      "moreAttention": {
+        "title": "5 super likes for every day",
+        "subtitle": "and the VIP icon will make you stand out from the crowd"
+      },
+      "convenientFeatures": {
+        "title": "Convenient features",
+        "subtitle": "Rewind profiles back and watch videos"
+      },
+      "instagramProfile": {
+        "title": "Instagram in profile",
+        "subtitle": "Quick access to Instagram"
+      },
+      "advancedFilters": {
+        "title": "Advanced filters",
+        "subtitle": "Search only VIP or only profiles with video"
+      },
+      "privacy": {
+        "title": "Privacy",
+        "subtitle": "Hide age and control what to show to others"
+      },
+      "swipes": {
+        "title": "Unlimited swipes",
+        "subtitle": "Enjoy a continuous stream of profiles and browse without restrictions."
+      }
+    },
+    "payment": {
+      "success": {
+        "description": {
+          "default": "Full access to all features and exclusive capabilities has been unlocked. Enjoy without limits!",
+          "3days": "You have received 3 days of full access to all premium features. Use the service without restrictions!",
+          "7days": "You have received 7 days of full access to all premium features. Use the service without restrictions!",
+          "30days": "You have received 30 days of full access to all premium features. Use the service without restrictions!",
+          "3months": "You have received 3 months of full access to all premium features. Use the service without restrictions!"
+        },
+        "button": "Start"
+      },
+      "error": {
+        "title": "Payment Failed",
+        "description": "Something went wrong. Please try again or choose a different payment method.",
+        "button": "Retry"
+      }
+    },
+    "days_one": "{{count}} day",
+    "days_other": "{{count}} days",
+    "freeSubscriptionEnds_one": "Free subscription ends {{count}} day",
+    "freeSubscriptionEnds_other": "Free subscription ends {{count}} days",
+    "subscriptionEndsIn_one": "Subscription ends in {{count}} day",
+    "subscriptionEndsIn_other": "Subscription ends in {{count}} days",
+    "subscriptionEndsToday": "Subscription ends today",
+    "youAreSubscribed": "You are subscribed",
+    "unsubscribe": "Unsubscribe",
+    "cancelSubscription": "Cancel subscription",
+    "telegramSubscriptionExpires_one": "Subscription expires in {{count}} day",
+    "telegramSubscriptionExpires_other": "Subscription expires in {{count}} days",
+    "subscriptionExpires_one": "Subscription expires in {{count}} day",
+    "subscriptionExpires_other": "Subscription expires in {{count}} days",
+    "autoRenewal": "Auto-renewal subscription - can be canceled at any time.",
+    "bonusDisclaimer": "Bonus percentage may change in the future.",
+    "choosePaymentMethod": "Choose payment method",
+    "choosePaymentMethodSubtitle": "Pay for your subscription in a way that's convenient for you",
+    "paymentMethods": {
+      "spb": {
+        "title": "SBP",
+        "subtitle": "Fast payment via bank (Russia)"
+      },
+      "stars": {
+        "title": "Telegram Stars",
+        "subtitle": "Pay with Telegram Stars"
+      },
+      "card": {
+        "title": "Bank Card",
+        "subtitle": "Visa / Mastercard (Europe)"
+      }
+    },
+    "tributeConfirm": {
+      "description": "The transaction may take up more than 1 minute. We will notify you when the payment is complete.",
+      "confirm": "Continue"
+    }
+  },
+  "error": {
+    "title": "Connection Error",
+    "description": "Please refresh the app or try again later",
+    "reload": "Reload App"
+  },
+  "swipe": {
+    "loading": {
+      "text": "Finding amazing people near you..."
+    },
+    "emptyProfiles": {
+      "title": "No profiles for selected filters",
+      "subtitle": "Try changing your search parameters",
+      "resetFilters": "Reset filters",
+      "changeFilters": "Change filters"
+    },
+    "limitReached": {
+      "title": "You've reached today's limit",
+      "subtitle": "Unlimited swipes are available to Premium users",
+      "getPremium": "Get Premium"
+    }
+  },
+  "video": {
+    "title": "Video",
+    "premiumOnly": "Video is only available for premium users"
+  },
+  "actionLimit": {
+    "like-limit": {
+      "title": "Like Limit Reached",
+      "description": "You have reached your daily like limit. Please wait until it resets or upgrade to premium for unlimited likes."
+    },
+    "dislike-limit": {
+      "title": "Dislike Limit Reached",
+      "description": "You have reached your daily dislike limit. Please wait until it resets or upgrade to premium for unlimited dislikes."
+    },
+    "superlike-limit": {
+      "title": "Superlike Limit Reached",
+      "description": "You have used up your entire limit of 5/5 super likes for today"
+    },
+    "revert-limit": {
+      "title": "Go back to last profile",
+      "description": "Premium account is required to see the previous profile"
+    },
+    "superlike-disabled": {
+      "title": "SuperLike",
+      "description": "Superlike is available only for Premium"
+    },
+    "getPremiumButton": "Get Premium"
+  },
+  "timeout": {
+    "title": "Access to swipes is limited",
+    "description": "You can continue in",
+    "continueButton": "Continue search"
+  },
+  "profileDelete": {
+    "title": "Why are you deleting your account?",
+    "reasons": {
+      "found_someone": "I found someone",
+      "app_problems": "App problems",
+      "too_few_users": "Too few active users",
+      "bad_interface": "Don't like the interface",
+      "bad_profiles": "Low quality profiles",
+      "other": "Other reason"
+    },
+    "notePlaceholder": "Describe in more detail",
+    "noteLimit": "Maximum 120 characters",
+    "cancelButton": "Cancel",
+    "deleteButton": "Delete account",
+    "confirmModal": {
+      "title": "Delete account?",
+      "description": "You can restore it within 30 days, after which the data will be deleted without the possibility of recovery",
+      "deleteButton": "Delete",
+      "cancelButton": "Cancel"
+    },
+    "cancelSubscriptionFirst": "Cancel subscription first"
+  },
+  "profileRestore": {
+    "title": "Your account can be restored",
+    "description": "Your account was deleted, but you can restore it within 30 days. Do you want to continue with your previous data?",
+    "restoreButton": "Restore profile",
+    "supportButton": "Contact support"
+  },
+  "profileReport": {
+    "title": "Report profile",
+    "reasons": {
+      "inappropriate_content": "Inappropriate content",
+      "fake_profile": "Fake profile",
+      "scam": "Scam",
+      "spam_or_advertisement": "Spam or advertisement",
+      "other": "Other reason"
+    },
+    "customTextPlaceholder": "Describe the reason for your complaint",
+    "customTextLimit": "Maximum 120 characters",
+    "cancelButton": "Cancel",
+    "reportButton": "Report and block",
+    "successModal": {
+      "title": "Thank you for your report",
+      "description": "We have received your complaint and forwarded it to our moderation team. Thank you for helping make PlusDate safer",
+      "okButton": "OK"
+    },
+    "confirmationModal": {
+      "title": "Block user",
+      "description": "Are you sure you want to block this user?",
+      "option1": "You won't see each other in swipes",
+      "option2": "This user won't be able to message you",
+      "option3": "Chat history will remain accessible"
+    }
+  },
+  "maintenance": {
+    "title": "We'll be back soon!",
+    "description": "We are updating the app to make it even more enjoyable to use. Please try again later"
+  }
+}
