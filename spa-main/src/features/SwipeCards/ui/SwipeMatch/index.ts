@@ -1,0 +1,1 @@
+export { SwipeMatch } from "./SwipeMatch"

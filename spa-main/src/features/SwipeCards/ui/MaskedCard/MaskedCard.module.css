@@ -1,0 +1,11 @@
+.maskedCard {
+  max-width: 500px;
+  mask-image: url("/shapes/mask.png");
+  mask-size: 100% 100%;
+  mask-repeat: no-repeat;
+  transform: translateZ(0px);
+  will-change: transform;
+  overflow: hidden;
+}
+
+

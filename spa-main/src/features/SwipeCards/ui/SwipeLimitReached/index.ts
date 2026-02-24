@@ -1,0 +1,1 @@
+export { SwipeLimitReached } from "./SwipeLimitReached"

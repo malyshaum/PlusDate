@@ -1,0 +1,1 @@
+export { FeedSlide, type FeedSlideType } from "./FeedSlide"
