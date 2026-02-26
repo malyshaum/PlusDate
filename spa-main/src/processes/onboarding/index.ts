@@ -1,0 +1,6 @@
+export { Basic } from "./ui/Basic.tsx"
+export { Interests } from "./ui/Interests.tsx"
+export { MediaNew as Media } from "./ui/MediaNew"
+export { Verification } from "./ui/Verification.tsx"
+export { Age } from "./ui/Age.tsx"
+export { City } from "./ui/City.tsx"
