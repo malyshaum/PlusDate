@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="104" height="112" fill="none" viewBox="0 0 104 112">
+    <g filter="url(#a)" opacity=".6">
+        <rect width="36" height="38" x="34" y="42" fill="#FF3D6C" rx="18"/>
+    </g>
+    <rect width="80" height="80" x="12" fill="url(#b)" rx="40"/>
+    <path stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="4" d="M56.476 29.514a3.5 3.5 0 1 0 6.047-3.528 3.5 3.5 0 0 0-6.047 3.528Zm0 0-14.952 8.722m0 0a3.5 3.5 0 1 0 0 3.528m0-3.528A3.48 3.48 0 0 1 42 40c0 .643-.173 1.246-.476 1.764m0 0 14.952 8.722m0 0a3.5 3.5 0 1 1 6.047 3.528 3.5 3.5 0 0 1-6.047-3.528Z"/>
+    <defs>
+        <linearGradient id="b" x1="35.134" x2="88.694" y1="-18.462" y2="3.359" gradientUnits="userSpaceOnUse">
+            <stop stop-color="#FE4773"/>
+            <stop offset="1" stop-color="#E2273C"/>
+        </linearGradient>
+        <filter id="a" width="104" height="106" x="0" y="6" color-interpolation-filters="sRGB" filterUnits="userSpaceOnUse">
+            <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+            <feColorMatrix in="SourceAlpha" result="hardAlpha" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"/>
+            <feMorphology in="SourceAlpha" operator="dilate" radius="5" result="effect1_dropShadow_1071_3969"/>
+            <feOffset dy="-2"/>
+            <feGaussianBlur stdDeviation="14.5"/>
+            <feComposite in2="hardAlpha" operator="out"/>
+            <feColorMatrix values="0 0 0 0 1 0 0 0 0 0.278431 0 0 0 0 0.47085 0 0 0 1 0"/>
+            <feBlend in2="BackgroundImageFix" result="effect1_dropShadow_1071_3969"/>
+            <feBlend in="SourceGraphic" in2="effect1_dropShadow_1071_3969" result="shape"/>
+        </filter>
+    </defs>
+</svg>
