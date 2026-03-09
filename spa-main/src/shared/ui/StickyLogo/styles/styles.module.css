@@ -1,0 +1,12 @@
+.stickyLogo {
+    position: absolute;
+    height: var(--tg-viewport-content-safe-area-inset-top, 0);
+    left: 50%;
+    top: calc(-1 * var(--tg-viewport-content-safe-area-inset-top, 0));
+    transform: translate(-50%, 0);
+    overflow: hidden;
+    z-index: 999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

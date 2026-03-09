@@ -1,0 +1,59 @@
+.container {
+  position: relative;
+  width: 100%;
+}
+
+.valueDisplay {
+  position: absolute;
+  bottom: 24px;
+  z-index: 10;
+  pointer-events: none;
+}
+
+.valueBox {
+  background-color: var(--color-white-50);
+  color: var(--color-white);
+  padding: 4px;
+  width: 33px;
+  height: 33px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 4px;
+  position: relative;
+  box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.15);
+}
+
+.valueCaret {
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 0;
+  border-left: 4px solid transparent;
+  border-right: 4px solid transparent;
+  border-top: 6px solid var(--color-white-50);
+}
+
+.slider {
+  height: 6px;
+  background-color: var(--color-white-20);
+}
+
+.slider :global(.range-slider__range) {
+  height: 6px;
+  border-radius: 3px;
+  background-color: var(--color-accent);
+}
+
+.slider :global(.range-slider__range[data-active]) {
+  background-color: var(--color-accent);
+}
+
+.slider :global(.range-slider__thumb) {
+  width: 24px;
+  height: 24px;
+  background-color: var(--color-white);
+  box-shadow: 0 3px 6px 0 rgba(156, 163, 175, 0.35);
+}

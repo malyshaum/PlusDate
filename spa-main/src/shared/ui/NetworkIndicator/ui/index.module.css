@@ -1,0 +1,38 @@
+.spinner {
+  --spinner-color: #fff;
+
+  border-width: 2.5px;
+  border-style: solid;
+  border-color: var(--spinner-color) var(--spinner-color) var(--spinner-color) transparent;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  animation: spin 1.5s linear infinite;
+  position: relative;
+}
+
+.spinner::before,
+.spinner::after {
+  content: "";
+  width: 2px;
+  height: 2px;
+  border-radius: 50%;
+  background: var(--spinner-color);
+  position: absolute;
+}
+
+.spinner::before {
+  left: 0.85px;
+  top: 1px;
+}
+
+.spinner::after {
+  left: 0.85px;
+  bottom: 1px;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}

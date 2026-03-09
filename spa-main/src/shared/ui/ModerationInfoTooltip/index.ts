@@ -1,0 +1,1 @@
+export { ModerationInfoTooltip } from "./ModerationInfoTooltip"
