@@ -1,0 +1,24 @@
+.custom-swiper :global(.swiper-pagination) {
+  gap: 4px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 12px;
+}
+
+.custom-swiper :global(.swiper-pagination-bullet) {
+  background: var(--color-white-20);
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  opacity: 1;
+  margin: 0 !important;
+}
+
+.custom-swiper :global(.swiper-pagination-bullet-active) {
+  background: var(--color-white);
+  transform: scale(1);
+}
