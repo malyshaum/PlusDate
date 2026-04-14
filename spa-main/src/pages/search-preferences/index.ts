@@ -1,0 +1,1 @@
+export { SearchPreferencesPage } from "./ui/SearchPreferencesPage"
