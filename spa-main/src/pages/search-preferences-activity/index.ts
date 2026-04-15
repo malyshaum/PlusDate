@@ -1,0 +1,1 @@
+export { SearchPreferencesActivityPage } from "./ui/SearchPreferencesActivityPage.tsx"
