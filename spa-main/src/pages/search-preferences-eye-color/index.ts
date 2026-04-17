@@ -1,0 +1,1 @@
+export { SearchPreferencesEyeColorPage } from "./ui/SearchPreferencesEyeColorPage.tsx"
