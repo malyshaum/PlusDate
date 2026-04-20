@@ -1,0 +1,8 @@
+*
+!private/
+!public/
+!.gitignore
+
+# Allow dictionaries
+!/storage/app/dictionaries
+!/storage/app/dictionaries/valid_names.txt
