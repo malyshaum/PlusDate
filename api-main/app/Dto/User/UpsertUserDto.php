@@ -11,7 +11,7 @@ class UpsertUserDto extends BaseDto
     public int $id;
     public string $name;
     public string|null $username;
-    public string $languageCode;
+    public string|null $languageCode;
     public string|null $photoUrl;
     public bool $isOnboarded;
     public bool $isUnderModeration;
