@@ -15,10 +15,6 @@ jobs:
   test:
     runs-on: ubuntu-latest
 
-    defaults:
-      run:
-        working-directory: api-main
-
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
@@ -31,6 +27,7 @@ jobs:
           extensions: bcmath, dom, fileinfo, json, mbstring, pdo_sqlite, sqlite3, xml, zip
 
       - name: Validate composer files
+        working-directory: api-main
         run: composer validate --strict
 
       - name: Cache composer dependencies
@@ -44,18 +41,24 @@ jobs:
             ${{ runner.os }}-php-
 
       - name: Install dependencies
+        working-directory: api-main
         run: composer install --no-interaction --prefer-dist --ignore-platform-req=ext-openswoole
 
       - name: Prepare environment
         run: |
-          cp .env.example .env
-          echo "APP_LOAD_VALID_NAMES_TO_REDIS=false" >> .env
+          ls -la
+          ls -la api-main
+          cp api-main/.env.example api-main/.env
+          echo "APP_LOAD_VALID_NAMES_TO_REDIS=false" >> api-main/.env
+          cd api-main
           php artisan key:generate
 
       - name: Run Pint formatting check
+        working-directory: api-main
         run: ./vendor/bin/pint --test
 
       - name: Run tests with coverage
+        working-directory: api-main
         run: php artisan test --coverage-clover=coverage.xml --coverage-text
 
       - name: Upload coverage artifact
