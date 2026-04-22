@@ -11,6 +11,14 @@ return new class extends Migration
      */
     public function up(): void
     {
+        if (Schema::hasColumn('user_search_preferences', 'id')) {
+            return;
+        }
+
+        if (Schema::getConnection()->getDriverName() === 'sqlite') {
+            return;
+        }
+
         Schema::table('user_search_preferences', function (Blueprint $table) {
             $table->id();
         });
