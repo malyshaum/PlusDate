@@ -19,6 +19,7 @@ class BaseDto
 
             if ($value instanceof BaseDto) {
                 $data[Str::snake($key)] = $value->toArray();
+                continue;
             }
 
             $data[Str::snake($key)] = $value;
