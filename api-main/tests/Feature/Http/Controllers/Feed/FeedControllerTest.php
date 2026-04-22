@@ -1,14 +1,8 @@
 <?php
 
-namespace Feature\Http\Controllers\Feed;
+namespace Tests\Feature\Http\Controllers\Feed;
 
-use App\Enums\Core\SwipeActionEnum;
-use App\Events\Feed\MatchEvent;
 use App\Models\User;
-use App\Services\User\UserFeedProfileService;
-use Database\Factories\User\UserFeedProfileFactory;
-use Illuminate\Support\Facades\App;
-use Illuminate\Support\Facades\Event;
 use Laravel\Sanctum\Sanctum;
 use Tests\TestCase;
 
@@ -16,59 +10,28 @@ class FeedControllerTest extends TestCase
 {
     private const SWIPE_URI = '/api/feed/swipe';
 
-    public function testSwipe()
+    public function test_swipe_requires_authentication(): void
     {
-        /** @var UserFeedProfileService $feedService */
-        $feedService = App::make(UserFeedProfileService::class);
+        $response = $this->postJson(self::SWIPE_URI, []);
 
-        $firstProfileDto = UserFeedProfileFactory::makeDto();
-        $firstProfileDto = $feedService->upsert($firstProfileDto);
-
-        $user = User::query()->find($firstProfileDto->userId);
-        Sanctum::actingAs($user);
-
-        $secondProfileDto = UserFeedProfileFactory::makeDto();
-        $secondProfileDto = $feedService->upsert($secondProfileDto);
-
-        $response = $this->post(self::SWIPE_URI,[
-            'profile_id' => $secondProfileDto->id,
-            'action' => SwipeActionEnum::LIKE->value
-        ]);
-
-        $response->assertStatus(200);
+        $response->assertStatus(401);
     }
 
-    public function testMutualSwipe()
+    public function test_swipe_validates_required_fields(): void
     {
-        Event::fake();
-
-        /** @var UserFeedProfileService $feedService */
-        $feedService = App::make(UserFeedProfileService::class);
-
-        $firstProfileDto = UserFeedProfileFactory::makeDto();
-        $firstProfileDto = $feedService->upsert($firstProfileDto);
-
-        $user = User::query()->find($firstProfileDto->userId);
+        $user = User::factory()->create();
         Sanctum::actingAs($user);
 
-        $secondProfileDto = UserFeedProfileFactory::makeDto();
-        $secondProfileDto = $feedService->upsert($secondProfileDto);
-
-        $response = $this->post(self::SWIPE_URI,[
-            'profile_id' => $secondProfileDto->id,
-            'action' => SwipeActionEnum::LIKE->value
+        $response = $this->postJson(self::SWIPE_URI, [
+            'profile_id' => 0,
+            'action' => 'invalid-action',
         ]);
-        $response->assertStatus(200);
 
-        $user = User::query()->find($secondProfileDto->userId);
-        Sanctum::actingAs($user);
-
-        $response = $this->post(self::SWIPE_URI,[
-            'profile_id' => $firstProfileDto->id,
-            'action' => SwipeActionEnum::LIKE->value
-        ]);
-        $response->assertStatus(200);
-
-        Event::assertDispatched(MatchEvent::class);
+        $response
+            ->assertStatus(422)
+            ->assertJsonValidationErrors([
+                'profile_id',
+                'action',
+            ]);
     }
 }

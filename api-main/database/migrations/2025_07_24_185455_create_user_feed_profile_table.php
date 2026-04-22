@@ -12,6 +12,8 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('user_feed_profile', function (Blueprint $table) {
+            $driver = Schema::getConnection()->getDriverName();
+
             $table->id();
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users');
@@ -29,7 +31,11 @@ return new class extends Migration
             $table->integer('search_for');
             $table->integer('height')->nullable();
             $table->string('eye_color')->nullable();
-            $table->geography('coordinates', subtype: 'point');
+            if ($driver === 'sqlite') {
+                $table->json('coordinates')->nullable();
+            } else {
+                $table->geography('coordinates', subtype: 'point');
+            }
             $table->timestamps();
         });
     }

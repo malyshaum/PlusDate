@@ -11,6 +11,14 @@ return new class extends Migration
      */
     public function up(): void
     {
+        if (Schema::getConnection()->getDriverName() === 'sqlite') {
+            Schema::table('cities', function (Blueprint $table) {
+                $table->json('location')->nullable();
+            });
+
+            return;
+        }
+
         Schema::table('cities', function (Blueprint $table) {
             $table->string('ru_name')->nullable()->change();
             $table->string('timezone')->nullable()->change();

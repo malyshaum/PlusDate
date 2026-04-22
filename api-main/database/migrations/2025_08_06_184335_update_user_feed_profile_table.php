@@ -14,7 +14,10 @@ return new class extends Migration
         Schema::table('user_feed_profile', function (Blueprint $table) {
             $table->dropColumn('height');
             $table->dropColumn('activity_id');
-            $table->vector('vector')->nullable()->change();
+
+            if (Schema::getConnection()->getDriverName() !== 'sqlite') {
+                $table->vector('vector')->nullable()->change();
+            }
         });
     }
 

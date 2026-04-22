@@ -17,14 +17,6 @@ final class RabbitMQClient
     /**
      * @throws Exception
      */
-    public function __construct()
-    {
-        $this->reconnect();
-    }
-
-    /**
-     * @throws Exception
-     */
     public function publishToExchange(string $exchange, string $routingKey, array $data): void
     {
         try {
@@ -38,7 +30,7 @@ final class RabbitMQClient
             $channel->basic_publish($message, $exchange, $routingKey);
         } catch (Throwable $exception) {
             Log::error($exception->getMessage());
-            $this->reconnect();
+            $this->close();
         }
     }
 

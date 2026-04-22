@@ -13,6 +13,10 @@ return new class extends Migration
      */
     public function up(): void
     {
+        if (Schema::getConnection()->getDriverName() === 'sqlite') {
+            return;
+        }
+
         $values = implode("', '", SubscriptionTypeEnum::values());
 
         DB::statement('ALTER TABLE telegram_subscriptions DROP CONSTRAINT IF EXISTS telegram_subscriptions_plan_check');
