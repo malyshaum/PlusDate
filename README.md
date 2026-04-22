@@ -114,16 +114,6 @@ Generated deliverables:
 - BA `.docx` and `.pdf`
 - backend defense `.docx`
 
-## Production / Public Access
-
-The repository contains deployment instructions for running the project in a containerized environment and exposing the application through a public URL.
-
-Referenced production backend URL:
-
-```text
-https://api.plus.date
-```
-
 ## Notes
 
 - Secrets are expected to be stored in environment variables, not in the repository.
