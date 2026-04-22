@@ -1,0 +1,64 @@
+name: Backend CI
+
+on:
+  push:
+    paths:
+      - "api-main/**"
+      - ".github/workflows/backend-ci.yml"
+  pull_request:
+    paths:
+      - "api-main/**"
+      - ".github/workflows/backend-ci.yml"
+  workflow_dispatch:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    defaults:
+      run:
+        working-directory: api-main
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: "8.4"
+          coverage: pcov
+          extensions: bcmath, dom, fileinfo, json, mbstring, pdo_sqlite, sqlite3, xml, zip
+
+      - name: Validate composer files
+        run: composer validate --strict
+
+      - name: Cache composer dependencies
+        uses: actions/cache@v4
+        with:
+          path: |
+            ~/.composer/cache/files
+            api-main/vendor
+          key: ${{ runner.os }}-php-${{ hashFiles('api-main/composer.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-php-
+
+      - name: Install dependencies
+        run: composer install --no-interaction --prefer-dist
+
+      - name: Prepare environment
+        run: |
+          cp .env.example .env
+          php artisan key:generate
+
+      - name: Run Pint formatting check
+        run: ./vendor/bin/pint --test
+
+      - name: Run tests with coverage
+        run: php artisan test --coverage-clover=coverage.xml --coverage-text
+
+      - name: Upload coverage artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: backend-coverage-report
+          path: api-main/coverage.xml
