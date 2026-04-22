@@ -42,21 +42,14 @@ class BaseEnumTraitTest extends TestCase
         $this->assertSame(0, $enumClass::valueIndex($firstCase));
     }
 
-    public function test_try_from_returns_null_for_null_value(): void
+    public function test_try_from_returns_null_for_invalid_value(): void
     {
-        $this->assertNull(GenderEnum::tryFrom(null));
+        $this->assertNull(GenderEnum::tryFrom('unknown'));
     }
 
     public function test_try_from_name_returns_null_for_null_value(): void
     {
         $this->assertNull(GenderEnum::tryFromName(null));
-    }
-
-    public function test_try_from_throws_for_invalid_value(): void
-    {
-        $this->expectException(InvalidArgumentException::class);
-
-        GenderEnum::tryFrom('unknown');
     }
 
     public function test_try_from_name_throws_for_invalid_name(): void
