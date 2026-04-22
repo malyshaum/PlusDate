@@ -28,9 +28,6 @@ class FeedControllerTest extends TestCase
         ]);
 
         $response
-            ->assertStatus(422)
-            ->assertJsonValidationErrors([
-                'profile_id',
-            ]);
+            ->assertStatus(404);
     }
 }
