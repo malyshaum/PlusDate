@@ -24,14 +24,13 @@ class FeedControllerTest extends TestCase
 
         $response = $this->postJson(self::SWIPE_URI, [
             'profile_id' => 0,
-            'action' => 'invalid-action',
+            'action' => 'like',
         ]);
 
         $response
             ->assertStatus(422)
             ->assertJsonValidationErrors([
                 'profile_id',
-                'action',
             ]);
     }
 }

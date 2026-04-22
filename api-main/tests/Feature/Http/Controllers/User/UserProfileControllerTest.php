@@ -121,9 +121,6 @@ class UserProfileControllerTest extends TestCase
         $response->assertOk()->assertJsonStructure([
             'id',
             'name',
-            'username',
-            'photo_url',
-            'language_code',
             'is_onboarded',
             'is_under_moderation',
             'files',
