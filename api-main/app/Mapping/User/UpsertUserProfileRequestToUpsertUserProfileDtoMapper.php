@@ -113,16 +113,21 @@ class UpsertUserProfileRequestToUpsertUserProfileDtoMapper extends CustomMapper
         $data = $source->all();
 
         if ($this->user->searchPreference === null) {
+            $feedProfileSex = $destination->feedProfile?->sex;
+            if ($feedProfileSex === null && $this->user->feedProfile !== null) {
+                $feedProfileSex = GenderEnum::tryFrom($this->user->feedProfile->sex);
+            }
+
             $gender = GenderEnum::MALE;
             if (
-                $destination->feedProfile->sex === GenderEnum::MALE
+                $feedProfileSex === GenderEnum::MALE
                 || (isset($data['gender']) && $data['gender'] === GenderEnum::MALE->value)
             ) {
                  $gender = GenderEnum::FEMALE;
             }
 
             $destination->searchPreference = new UserSearchPreferenceDto();
-            $destination->searchPreference->cityId = $data['city_id'];
+            $destination->searchPreference->cityId = $data['city_id'] ?? $this->user->feedProfile?->city_id;
             $destination->searchPreference->includeNearby = false;
             $destination->searchPreference->withVideo = false;
             $destination->searchPreference->fromAge = 18;
