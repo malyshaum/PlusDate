@@ -123,4 +123,6 @@ return [
         'store' => env('APP_MAINTENANCE_STORE', 'database'),
     ],
 
+    'load_valid_names_to_redis' => (bool) env('APP_LOAD_VALID_NAMES_TO_REDIS', true),
+
 ];

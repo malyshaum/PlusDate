@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Providers;
 
+use Throwable;
 use Illuminate\Support\Facades\Redis;
 use Illuminate\Support\ServiceProvider;
 
@@ -15,29 +16,39 @@ class ValidNamesServiceProvider extends ServiceProvider
 
     public function boot(): void
     {
+        if (!config('app.load_valid_names_to_redis', true)) {
+            return;
+        }
+
         $this->loadValidNamesToRedis();
     }
 
     private function loadValidNamesToRedis(): void
     {
-        if (Redis::exists(self::REDIS_KEY)) {
+        try {
+            if (Redis::exists(self::REDIS_KEY)) {
+                return;
+            }
+
+            $filePath = $this->getFilePath();
+            if (!$filePath) {
+                return;
+            }
+
+            $lines = file($filePath, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
+
+            if (!$lines) {
+                return;
+            }
+
+            $names = $this->scanNamesFromFiles($lines);
+
+            $this->pushToRedis($names);
+        } catch (Throwable) {
+            // Redis can be unavailable during CI bootstrap or local setup.
+            // The dictionary is an optimization layer, so application boot should not fail here.
             return;
         }
-
-        $filePath = $this->getFilePath();
-        if (!$filePath) {
-            return;
-        }
-
-        $lines = file($filePath, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
-
-        if (!$lines) {
-            return;
-        }
-
-        $names = $this->scanNamesFromFiles($lines);
-
-        $this->pushToRedis($names);
     }
 
     private function getFilePath(): ?string
