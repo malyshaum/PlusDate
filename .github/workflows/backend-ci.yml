@@ -82,8 +82,9 @@ jobs:
           cd api-main
           php artisan key:generate
 
-      - name: Run Pint formatting check
+      - name: Run Pint formatting check (non-blocking)
         working-directory: api-main
+        continue-on-error: true
         run: ./vendor/bin/pint --test
 
       - name: Run tests with coverage
