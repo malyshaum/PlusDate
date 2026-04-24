@@ -17,8 +17,9 @@ RUN cd /tmp && \
     cd / && \
     rm -rf /tmp/pgvector
 
-# Copy initialization script
-COPY init.sql /docker-entrypoint-initdb.d/
+# Copy initialization scripts
+COPY init/ /docker-entrypoint-initdb.d/
 
 # Ensure proper permissions
-RUN chmod 644 /docker-entrypoint-initdb.d/init.sql
+RUN chmod 644 /docker-entrypoint-initdb.d/*.sql && \
+    chmod 755 /docker-entrypoint-initdb.d/*.sh

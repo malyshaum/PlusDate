@@ -1,4 +1,4 @@
-.PHONY: up down build cli clean restart-supervisor serve restart kill-port
+.PHONY: up down build cli clean restart-supervisor serve restart kill-port schema-dump
 
 up:
 	docker compose up -d
@@ -27,3 +27,7 @@ kill-port:
 
 restart:
 	docker compose restart api
+
+schema-dump:
+	mkdir -p database/sql
+	docker compose exec -T postgres pg_dump --schema-only --no-owner --no-privileges -U $$POSTGRES_USER $$POSTGRES_DB > database/sql/schema.sql

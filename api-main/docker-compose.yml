@@ -18,9 +18,15 @@ services:
         container_name: postgresql
         build: ./docker/database
         environment:
-            POSTGRES_USER: ${DB_USERNAME}
-            POSTGRES_PASSWORD: ${DB_PASSWORD}
+            POSTGRES_USER: ${POSTGRES_SUPERUSER:-postgres}
+            POSTGRES_PASSWORD: ${POSTGRES_SUPERUSER_PASSWORD:-postgres}
             POSTGRES_DB: ${DB_DATABASE}
+            DB_USERNAME: ${DB_USERNAME}
+            DB_PASSWORD: ${DB_PASSWORD}
+            DB_READ_USERNAME: ${DB_READ_USERNAME:-plusdate_app_read}
+            DB_READ_PASSWORD: ${DB_READ_PASSWORD:-plusdate_read_password}
+            DB_WRITE_USERNAME: ${DB_WRITE_USERNAME:-plusdate_app_write}
+            DB_WRITE_PASSWORD: ${DB_WRITE_PASSWORD:-plusdate_write_password}
         volumes:
             - postgres_data:/var/lib/postgresql/data
         ports:
