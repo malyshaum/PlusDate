@@ -32,15 +32,11 @@ RUN npm ci
 # Copy source code
 COPY . .
 
-# Build the application based on mode
-RUN if [ "$BUILD_MODE" = "staging" ]; then \
-      npm run build:staging; \
-    else \
-      npm run build; \
-    fi
+# Build the application
+RUN npm run build && npm cache clean --force
 
 # Production stage
-FROM nginx:alpine
+FROM nginx:1.27-alpine
 
 # Copy built files to nginx
 COPY --from=builder /app/dist /usr/share/nginx/html
@@ -48,8 +44,16 @@ COPY --from=builder /app/dist /usr/share/nginx/html
 # Copy custom nginx config
 COPY nginx.conf /etc/nginx/nginx.conf
 
-# Expose port 80
-EXPOSE 80
+RUN touch /tmp/nginx.pid \
+    && chown -R nginx:nginx /tmp /var/cache/nginx /usr/share/nginx/html
+
+USER nginx
+
+# Expose port 8080
+EXPOSE 8080
+
+HEALTHCHECK --interval=30s --timeout=5s --start-period=10s --retries=3 \
+  CMD wget -q -O /dev/null http://127.0.0.1:8080/ || exit 1
 
 # Start nginx
 CMD ["nginx", "-g", "daemon off;"]

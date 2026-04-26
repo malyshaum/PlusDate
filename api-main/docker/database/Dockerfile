@@ -1,4 +1,4 @@
-FROM postgis/postgis:15-master
+FROM postgis/postgis:15-3.4
 
 # Install dependencies for pgvector
 RUN apt-get update && apt-get install -y \

@@ -1,13 +1,21 @@
 #!/bin/bash
 set -euo pipefail
 
-ADMIN_ROLE="${DB_USERNAME:-plusdate_admin}"
-ADMIN_PASSWORD="${DB_PASSWORD:-plusdate_admin_password}"
-READ_ROLE="${DB_READ_USERNAME:-plusdate_app_read}"
-READ_PASSWORD="${DB_READ_PASSWORD:-plusdate_read_password}"
-WRITE_ROLE="${DB_WRITE_USERNAME:-plusdate_app_write}"
-WRITE_PASSWORD="${DB_WRITE_PASSWORD:-plusdate_write_password}"
-APP_DB="${POSTGRES_DB:-plusdate}"
+: "${DB_USERNAME:?DB_USERNAME is required}"
+: "${DB_PASSWORD:?DB_PASSWORD is required}"
+: "${DB_READ_USERNAME:?DB_READ_USERNAME is required}"
+: "${DB_READ_PASSWORD:?DB_READ_PASSWORD is required}"
+: "${DB_WRITE_USERNAME:?DB_WRITE_USERNAME is required}"
+: "${DB_WRITE_PASSWORD:?DB_WRITE_PASSWORD is required}"
+: "${POSTGRES_DB:?POSTGRES_DB is required}"
+
+ADMIN_ROLE="${DB_USERNAME}"
+ADMIN_PASSWORD="${DB_PASSWORD}"
+READ_ROLE="${DB_READ_USERNAME}"
+READ_PASSWORD="${DB_READ_PASSWORD}"
+WRITE_ROLE="${DB_WRITE_USERNAME}"
+WRITE_PASSWORD="${DB_WRITE_PASSWORD}"
+APP_DB="${POSTGRES_DB}"
 
 psql -v ON_ERROR_STOP=1 --username "$POSTGRES_USER" --dbname "$APP_DB" <<SQL
 DO \$\$
