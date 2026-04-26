@@ -6,6 +6,7 @@ use App\Dto\User\UserFeedProfileDto;
 use App\Enums\Core\EyeColorEnum;
 use App\Enums\Core\GenderEnum;
 use App\Models\User\UserFeedProfile;
+use Clickbar\Magellan\Data\Geometries\Point;
 
 class VectorService
 {
@@ -22,8 +23,7 @@ class VectorService
     public function createFromDto(UserFeedProfileDto $feedProfileDto): array
     {
         $sex = $feedProfileDto->sex === GenderEnum::MALE ? 1 : 2;
-        $coordinates['latitude'] = $feedProfileDto->coordinates->getLatitude();
-        $coordinates['longitude'] = $feedProfileDto->coordinates->getLongitude();
+        $coordinates = $this->normalizeCoordinates($feedProfileDto->coordinates);
 
         $activityId = $feedProfileDto?->activityId;
         if ($activityId === null && !empty($feedProfileDto->activityIds)) {
@@ -76,5 +76,20 @@ class VectorService
         }
 
         return $dotProduct / ($magnitude1 * $magnitude2);
+    }
+
+    private function normalizeCoordinates(Point|array|null $coordinates): array
+    {
+        if ($coordinates instanceof Point) {
+            return [
+                'latitude' => $coordinates->getLatitude(),
+                'longitude' => $coordinates->getLongitude(),
+            ];
+        }
+
+        return [
+            'latitude' => (float)($coordinates['latitude'] ?? 0),
+            'longitude' => (float)($coordinates['longitude'] ?? 0),
+        ];
     }
 }

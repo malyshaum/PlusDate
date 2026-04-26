@@ -41,7 +41,7 @@ class UserFeedProfileSeeder extends Seeder
 
         /** @see UserFeedProfileFactory */
         UserFeedProfile::factory()
-            ->nearby($city->location->getLatitude(), $city->location->getLongitude())
+            ->nearby($city->getLatitudeValue(), $city->getLongitudeValue())
             ->count(50)
             ->create();
     }
@@ -54,8 +54,8 @@ class UserFeedProfileSeeder extends Seeder
             $city = City::query()->inRandomOrder()->first();
         }
 
-        $latitude = $city->location->getLatitude();
-        $longitude = $city->location->getLongitude();
+        $latitude = $city->getLatitudeValue();
+        $longitude = $city->getLongitudeValue();
         echo "using city: $city->name with coordinates $latitude, $longitude\n";
 
         /** @see UserFeedProfileFactory */

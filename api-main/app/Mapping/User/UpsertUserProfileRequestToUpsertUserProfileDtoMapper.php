@@ -147,12 +147,22 @@ class UpsertUserProfileRequestToUpsertUserProfileDtoMapper extends CustomMapper
         if (isset($data['city_id'])) {
             $city = City::query()->find((int)$data['city_id']);
             $feedProfileDto->cityId = $city->id;
-            $feedProfileDto->coordinates = $city->location;
+            $feedProfileDto->coordinates = config('database.use_postgis')
+                ? $city->location
+                : [
+                    'latitude' => $city->getLatitudeValue(),
+                    'longitude' => $city->getLongitudeValue(),
+                ];
 
             $country = Country::query()->where('country_code', $city->country_code)->firstOrFail();
             $feedProfileDto->countryId = $country->id;
         } elseif (isset($data['coordinates'])) {
-            $feedProfileDto->coordinates = Point::make($data['coordinates']['latitude'], $data['coordinates']['longitude']);
+            $feedProfileDto->coordinates = config('database.use_postgis')
+                ? Point::make($data['coordinates']['latitude'], $data['coordinates']['longitude'])
+                : [
+                    'latitude' => (float)$data['coordinates']['latitude'],
+                    'longitude' => (float)$data['coordinates']['longitude'],
+                ];
         }
 
         if(isset($data['sex'])) {

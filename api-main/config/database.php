@@ -4,6 +4,8 @@ use Illuminate\Support\Str;
 
 return [
 
+    'use_postgis' => filter_var(env('DB_USE_POSTGIS', false), FILTER_VALIDATE_BOOL),
+
     /*
     |--------------------------------------------------------------------------
     | Default Database Connection Name

@@ -13,7 +13,7 @@ class CityResource extends JsonResource
             'en_name' => $this->name,
             'ru_name' => $this->ru_name,
             'country_code' => $this->country_code,
-            'location' => $this->location,
+            'location' => method_exists($this->resource, 'getLocationPayload') ? $this->getLocationPayload() : $this->location,
             'timezone' => $this->timezone,
             'ru_country_name' => $this->ru_country_name,
             'en_country_name' => $this->en_country_name,

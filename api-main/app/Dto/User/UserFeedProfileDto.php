@@ -17,7 +17,7 @@ class UserFeedProfileDto extends BaseDto
     public GenderEnum $sex;
     public int $age;
     public SearchForEnum|null $searchFor;
-    public Point $coordinates;
+    public Point|array|null $coordinates;
     public array|null $vector;
     public int|null $height;
     public string|null $eyeColor;

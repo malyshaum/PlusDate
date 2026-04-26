@@ -11,9 +11,24 @@ return new class extends Migration
      */
     public function up(): void
     {
-        if (Schema::getConnection()->getDriverName() === 'sqlite') {
+        $driver = Schema::getConnection()->getDriverName();
+        $usePostgis = config('database.use_postgis');
+
+        if ($driver === 'sqlite' || ! $usePostgis) {
             Schema::table('cities', function (Blueprint $table) {
-                $table->json('location')->nullable();
+                $table->string('ru_name')->nullable()->change();
+                $table->string('timezone')->nullable()->change();
+
+                if (! Schema::hasColumn('cities', 'location')) {
+                    $table->json('location')->nullable();
+                }
+            });
+
+            Schema::table('countries', function (Blueprint $table) {
+                $table->string('ru_name')->nullable()->change();
+                $table->float('latitude')->nullable()->change();
+                $table->float('longitude')->nullable()->change();
+                $table->string('timezone')->nullable()->change();
             });
 
             return;

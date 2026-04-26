@@ -61,7 +61,7 @@ class UserFeedProfileFactory extends Factory
             'search_for' => SearchForEnum::values()[array_rand(SearchForEnum::values())],
             'height' => $faker->numberBetween(150, 210),
             'eye_color' => $faker->randomElement(EyeColorEnum::values()),
-            'coordinates' => Point::make($city->location->getX(), $city->location->getY(), srid: 4326),
+            'coordinates' => self::makeCoordinates($city->getLatitudeValue(), $city->getLongitudeValue()),
         ];
 
         /** @var UserFeedProfileDto $feedProfileDto */
@@ -79,7 +79,7 @@ class UserFeedProfileFactory extends Factory
             $lng = $baseLng + $faker->randomFloat(4, -0.1, 0.1);
 
             return [
-                'coordinates' => Point::make($lat, $lng, srid: 4326),
+                'coordinates' => self::makeCoordinates($lat, $lng),
             ];
         });
     }
@@ -94,7 +94,7 @@ class UserFeedProfileFactory extends Factory
             $lng = $baseLng + $faker->randomFloat(4, -50, 50);
 
             return [
-                'coordinates' => Point::make($lat, $lng, srid: 4326),
+                'coordinates' => self::makeCoordinates($lat, $lng),
             ];
         });
     }
@@ -138,5 +138,20 @@ class UserFeedProfileFactory extends Factory
         return $this->state([
             'activity_id' => $activityId,
         ]);
+    }
+
+    private static function makeCoordinates(?float $latitude, ?float $longitude): Point|array
+    {
+        $latitude ??= 0.0;
+        $longitude ??= 0.0;
+
+        if (config('database.use_postgis')) {
+            return Point::make($latitude, $longitude, srid: 4326);
+        }
+
+        return [
+            'latitude' => $latitude,
+            'longitude' => $longitude,
+        ];
     }
 }

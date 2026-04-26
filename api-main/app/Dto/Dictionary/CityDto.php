@@ -11,6 +11,6 @@ class CityDto extends BaseDto
     public string|null $enName;
     public string|null $ruName;
     public string $countryCode;
-    public Point|null $location;
+    public Point|array|null $location;
     public string|null $timezone;
 }

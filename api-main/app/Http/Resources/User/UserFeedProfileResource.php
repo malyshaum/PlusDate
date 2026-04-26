@@ -30,10 +30,7 @@ class UserFeedProfileResource extends JsonResource
             'sex' => $this->sex,
             'age' => $this->age,
             'search_for' => $this->search_for,
-            'coordinates' => [
-                $this->coordinates->getLatitude(),
-                $this->coordinates->getLongitude(),
-            ],
+            'coordinates' => $this->getCoordinatesPayload(),
             'activities' => $activitiesDto,
             'height' => $this->height,
             'eye_color' => $this->eye_color,

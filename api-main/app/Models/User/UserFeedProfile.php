@@ -42,12 +42,18 @@ class UserFeedProfile extends Model
     ];
 
     protected $casts = [
-        'coordinates' => Point::class,
         'search_for' => SearchForEnum::class,
         'zodiac_sign' => ZodiacSignEnum::class,
         'vector' => 'array',
         'hobbies' => 'array',
     ];
+
+    public function __construct(array $attributes = [])
+    {
+        parent::__construct($attributes);
+
+        $this->casts['coordinates'] = config('database.use_postgis') ? Point::class : 'array';
+    }
 
     /**
      * @deprecated Use activities() instead. This method is kept for backward compatibility.
@@ -81,5 +87,46 @@ class UserFeedProfile extends Model
     public function swipesReceived(): HasMany
     {
         return $this->hasMany(UserSwipe::class, 'profile_id');
+    }
+
+    public function getLatitudeValue(): ?float
+    {
+        if (config('database.use_postgis') && $this->coordinates instanceof Point) {
+            return $this->coordinates->getLatitude();
+        }
+
+        if (is_array($this->coordinates)) {
+            return isset($this->coordinates['latitude']) ? (float)$this->coordinates['latitude'] : null;
+        }
+
+        return null;
+    }
+
+    public function getLongitudeValue(): ?float
+    {
+        if (config('database.use_postgis') && $this->coordinates instanceof Point) {
+            return $this->coordinates->getLongitude();
+        }
+
+        if (is_array($this->coordinates)) {
+            return isset($this->coordinates['longitude']) ? (float)$this->coordinates['longitude'] : null;
+        }
+
+        return null;
+    }
+
+    public function getCoordinatesPayload(): ?array
+    {
+        $latitude = $this->getLatitudeValue();
+        $longitude = $this->getLongitudeValue();
+
+        if ($latitude === null || $longitude === null) {
+            return null;
+        }
+
+        return [
+            'latitude' => $latitude,
+            'longitude' => $longitude,
+        ];
     }
 }

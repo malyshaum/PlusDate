@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('user_feed_profile', function (Blueprint $table) {
             $driver = Schema::getConnection()->getDriverName();
+            $usePostgis = config('database.use_postgis');
 
             $table->id();
             $table->unsignedBigInteger('user_id');
@@ -31,7 +32,7 @@ return new class extends Migration
             $table->integer('search_for');
             $table->integer('height')->nullable();
             $table->string('eye_color')->nullable();
-            if ($driver === 'sqlite') {
+            if ($driver === 'sqlite' || ! $usePostgis) {
                 $table->json('coordinates')->nullable();
             } else {
                 $table->geography('coordinates', subtype: 'point');

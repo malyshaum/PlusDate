@@ -12,7 +12,11 @@ if (config("database.default") !== "pgsql") {
     exit(0);
 }
 
-$extensions = ["postgis", "postgis_topology", "vector"];
+$extensions = ["vector"];
+
+if (config("database.use_postgis")) {
+    $extensions = ["postgis", "postgis_topology", "vector"];
+}
 
 foreach ($extensions as $extension) {
     try {

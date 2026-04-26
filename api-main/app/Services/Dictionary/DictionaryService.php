@@ -13,6 +13,7 @@ use App\Models\Dictionary\Hobby;
 use AutoMapperPlus\AutoMapper;
 use AutoMapperPlus\Exception\UnregisteredMappingException;
 use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Support\Facades\Schema;
 use Stevebauman\Location\Facades\Location;
 
 class DictionaryService
@@ -67,11 +68,15 @@ class DictionaryService
         float|null $latitude = null,
         float|null $longitude = null
     ): Collection {
+        $usePostgis = config('database.use_postgis');
         $query = City::query()
             ->join('countries', 'countries.country_code', '=', 'cities.country_code');
 
-        $baseSelect = 'cities.id, cities.name, cities.ru_name, cities.name as en_name, cities.country_code, ' .
-                     'ST_Y(location::geometry) as latitude, ST_X(location::geometry) as longitude';
+        $baseSelect = $usePostgis
+            ? 'cities.id, cities.name, cities.ru_name, cities.name as en_name, cities.country_code, ' .
+                'ST_Y(location::geometry) as latitude, ST_X(location::geometry) as longitude'
+            : 'cities.id, cities.name, cities.ru_name, cities.name as en_name, cities.country_code, ' .
+                'cities.latitude as latitude, cities.longitude as longitude';
 
         $userIp = request()->header('CF-Connecting-IP') ?? request()->header('X-Forwarded-For');;
         if (($latitude === null || $longitude === null) && $userIp) {
@@ -81,6 +86,9 @@ class DictionaryService
         }
 
         if (
+            $usePostgis
+            && Schema::getConnection()->getDriverName() === 'pgsql'
+            &&
             $searchText === null
             && ($latitude !== null && $longitude !== null)
         ) {

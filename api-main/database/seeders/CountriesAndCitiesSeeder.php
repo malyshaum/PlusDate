@@ -46,13 +46,22 @@ class CountriesAndCitiesSeeder extends Seeder
 
         foreach ($cities as $citiesData) {
             $location = explode(',', $citiesData['location']);
+            $latitude = (float)$location[0];
+            $longitude = (float)$location[1];
 
             City::query()->insert(
                 [
                     'name' => $citiesData['names']['en'],
                     'ru_name' => $citiesData['names']['ru'],
                     'country_code' => $citiesData['country_code'],
-                    'location' => Point::make((float)$location[1], (float)$location[0]),
+                    'latitude' => $latitude,
+                    'longitude' => $longitude,
+                    'location' => config('database.use_postgis')
+                        ? Point::make($longitude, $latitude)
+                        : [
+                            'latitude' => $latitude,
+                            'longitude' => $longitude,
+                        ],
                 ],
             );
 

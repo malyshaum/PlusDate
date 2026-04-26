@@ -32,6 +32,8 @@ readonly class UserFeedProfileService
 
     private function apply(Builder $query, UserSearchPreferenceDto $filter): Builder
     {
+        $usePostgis = config('database.use_postgis');
+
         foreach ($filter->toArray() as $key => $value) {
             if ($value === null) {
                 continue;
@@ -57,12 +59,18 @@ readonly class UserFeedProfileService
                     }
                     break;
                 case 'city_id':
-                    $city = DB::table('cities')
-                        ->select(DB::raw('ST_AsText(location) as location'))
-                        ->find((int)$value);
+                    if ($usePostgis) {
+                        $city = DB::table('cities')
+                            ->select(DB::raw('ST_AsText(location) as location'))
+                            ->find((int)$value);
 
-                    $query->addSelect(DB::raw("ST_Distance(coordinates, ST_GeogFromText('$city->location')) as distance"));
-                    $query->orderBy('distance');
+                        if ($city?->location !== null) {
+                            $query->addSelect(DB::raw("ST_Distance(coordinates, ST_GeogFromText('$city->location')) as distance"));
+                            $query->orderBy('distance');
+                        }
+                    } else {
+                        $query->where('city_id', (int)$value);
+                    }
                     break;
                 case 'eye_color':
                     if(!empty($value)) {
